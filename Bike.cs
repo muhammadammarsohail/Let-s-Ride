@@ -19,5 +19,18 @@ namespace Ride
             int finalSpeed = initialSpeed - intensity * 5;
             return finalSpeed;
         }
+
+        public int ChangeGear(int initialGear, int change)
+        {
+            int finalGear = initialGear + change;
+            return finalGear;
+        }
+
+        public void Display(int gear, int speed)
+        {
+            Console.WriteLine("Gear: " + gear);
+            Console.WriteLine("Speed: " + speed);
+        }
+
     }
 }

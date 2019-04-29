@@ -11,6 +11,6 @@ namespace Ride
         int Speedup(int initialSpeed, int intensity);
         int ApplyBrakes(int initialSpeed, int intensity);
         int ChangeGear(int initialGear, int change);
-        int Display(int gear, int speed);
+        void Display(int gear, int speed);
     }
 }
