@@ -13,5 +13,11 @@ namespace Ride
             int finalSpeed = initialSpeed + intensity * 5;
             return finalSpeed;
         }
+
+        public int ApplyBrakes(int initialSpeed, int intensity)
+        {
+            int finalSpeed = initialSpeed - intensity * 5;
+            return finalSpeed;
+        }
     }
 }
