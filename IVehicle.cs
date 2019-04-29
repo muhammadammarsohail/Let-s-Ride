@@ -8,6 +8,7 @@ namespace Ride
 {
     interface IVehicle
     {
+        
         int Speedup(int initialSpeed, int intensity);
         int ApplyBrakes(int initialSpeed, int intensity);
         int ChangeGear(int initialGear, int change);

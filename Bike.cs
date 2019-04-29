@@ -8,6 +8,7 @@ namespace Ride
 {
     class Bike : IVehicle
     {
+        public int speed, gear;
         public int Speedup(int initialSpeed, int intensity)
         {
             int finalSpeed = initialSpeed + intensity * 5;
