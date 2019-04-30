@@ -8,7 +8,7 @@ namespace Ride
 {
     class Bike : IVehicle
     {
-        public int speed, gear;
+        public int speed = 0, gear = 0;
         public void Go()
         {
             do {
@@ -20,18 +20,22 @@ namespace Ride
                     case 'r':
                         int intensityR = action.Length * 5;
                         speed = Speedup(speed, intensityR);
+                        Display(gear, speed);
                         break;
                     case 'b':
                         int intensityBr = action.Length * 5;
                         speed = ApplyBrakes(speed, intensityBr);
+                        Display(gear, speed);
                         break;
                     case 'u':
                         int shiftU = action.Length;
                         gear = ChangeGear(gear, shiftU);
+                        Display(gear, speed);
                         break;
                     case 'd':
                         int shiftD = 0 - action.Length;
                         gear = ChangeGear(gear, shiftD);
+                        Display(gear, speed);
                         break;
                     default:
                         Console.WriteLine("Put a valid action.");

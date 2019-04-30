@@ -15,10 +15,12 @@ namespace Ride
             {
                 case "bicycle":
                     Bicycle bi = new Bicycle();
+                    bi.Go();
                     break;
 
                 case "motorcycle":
                     Motorcycle motor = new Motorcycle();
+                    motor.Go();
                     break;
 
                 default:
