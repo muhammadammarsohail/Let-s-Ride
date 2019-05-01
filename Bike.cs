@@ -77,7 +77,7 @@ namespace Ride
         public int ApplyBrakes(int initialSpeed)
         {
             int finalSpeed = initialSpeed;
-            if (initialSpeed < 0)
+            if (initialSpeed > 0)
             finalSpeed = initialSpeed - 5;
             return finalSpeed;
         }
