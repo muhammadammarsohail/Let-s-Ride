@@ -9,8 +9,8 @@ namespace Ride
     interface IVehicle
     {
         void Go();
-        int Speedup(int initialSpeed, int intensity);
-        int ApplyBrakes(int initialSpeed, int intensity);
+        int Speedup(int initialSpeed);
+        int ApplyBrakes(int initialSpeed);
         int ChangeGear(int initialGear, int change);
         void Display(int gear, int speed);
     }

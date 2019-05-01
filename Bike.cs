@@ -12,29 +12,33 @@ namespace Ride
         public void Go()
         {
             do {
-            string action = Console.ReadLine();
-            char act = action[0];
-                if (act == 's') break;
+                
+
+                ConsoleKeyInfo k = Console.ReadKey();
+             
+                char act = (char) k.Key;
+             
+                if (act == 'S') break;
                 switch (act)
                 {
-                    case 'r':
-                        int intensityR = action.Length * 5;
-                        speed = Speedup(speed, intensityR);
+                    case 'R':                        
+                        speed = Speedup(speed);
+                        Console.Clear();
                         Display(gear, speed);
                         break;
-                    case 'b':
-                        int intensityBr = action.Length * 5;
-                        speed = ApplyBrakes(speed, intensityBr);
+                    case 'B':                       
+                        speed = ApplyBrakes(speed);
+                        Console.Clear();
                         Display(gear, speed);
                         break;
-                    case 'u':
-                        int shiftU = action.Length;
-                        gear = ChangeGear(gear, shiftU);
+                    case 'U':                       
+                        gear = ChangeGear(gear, 1);
+                        Console.Clear();
                         Display(gear, speed);
                         break;
-                    case 'd':
-                        int shiftD = 0 - action.Length;
-                        gear = ChangeGear(gear, shiftD);
+                    case 'D':                        
+                        gear = ChangeGear(gear , 0-1);
+                        Console.Clear();
                         Display(gear, speed);
                         break;
                     default:
@@ -43,15 +47,18 @@ namespace Ride
                 }  
             } while (true);
         }
-        public int Speedup(int initialSpeed, int intensity)
+        public int Speedup(int initialSpeed)
         {
-            int finalSpeed = initialSpeed + intensity;
+            
+            int finalSpeed = initialSpeed + 5;
             return finalSpeed;
         }
 
-        public int ApplyBrakes(int initialSpeed, int intensity)
+        public int ApplyBrakes(int initialSpeed)
         {
-            int finalSpeed = initialSpeed - intensity;
+            int finalSpeed = initialSpeed;
+            if (initialSpeed < 0)
+            finalSpeed = initialSpeed - 5;
             return finalSpeed;
         }
 
