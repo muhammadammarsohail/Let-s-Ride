@@ -49,19 +49,23 @@ namespace Ride
         }
         public int Speedup(int initialSpeed)
         {
-            int finalSpeed;
+            int finalSpeed = initialSpeed;
             switch (gear) {
                 case 1:
+                    if(initialSpeed < 20)
             finalSpeed = initialSpeed + 5;
                     break;
                 case 2:
+                    if(initialSpeed < 30 && initialSpeed > 5)
                      finalSpeed = initialSpeed + 5;
                     break;
                 case 3:
-                     finalSpeed = initialSpeed + 5;
+                    if (initialSpeed < 60 && initialSpeed > 20)
+                        finalSpeed = initialSpeed + 5;
                     break;
                 case 4:
-                     finalSpeed = initialSpeed + 5;
+                    if (initialSpeed < 120 && initialSpeed > 40)
+                        finalSpeed = initialSpeed + 5;
                     break;
                 default:
                     finalSpeed = initialSpeed;
