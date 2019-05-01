@@ -49,8 +49,24 @@ namespace Ride
         }
         public int Speedup(int initialSpeed)
         {
-            
-            int finalSpeed = initialSpeed + 5;
+            int finalSpeed;
+            switch (gear) {
+                case 1:
+            finalSpeed = initialSpeed + 5;
+                    break;
+                case 2:
+                     finalSpeed = initialSpeed + 5;
+                    break;
+                case 3:
+                     finalSpeed = initialSpeed + 5;
+                    break;
+                case 4:
+                     finalSpeed = initialSpeed + 5;
+                    break;
+                default:
+                    finalSpeed = initialSpeed;
+                    break;
+            }
             return finalSpeed;
         }
 
@@ -65,6 +81,7 @@ namespace Ride
         public int ChangeGear(int initialGear, int change)
         {
             int finalGear = initialGear + change;
+            if (finalGear < 0 || finalGear > 4) finalGear = initialGear;
             return finalGear;
         }
 
