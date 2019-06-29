@@ -13,7 +13,7 @@ namespace Ride
         
         public void Go()
         {
-            Display(gear, speed, time, damaged);
+            Display(gear, speed, time, sb, damaged);
             Timer t = new Timer();
             t.Elapsed += new ElapsedEventHandler(DisplayTime);
             t.Interval = 1000; // 1000 ms is one second
