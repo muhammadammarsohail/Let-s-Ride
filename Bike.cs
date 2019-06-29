@@ -9,7 +9,7 @@ namespace Ride
 {
     class Bike : IVehicle
     {
-        public static int speed = 0, gear = 0, time = 20, dist = 0, sb, damaged;
+        public static int speed = 0, gear = 0, time = 60, dist = 0, sb = 500, damaged = 0;
         
         public void Go()
         {
@@ -18,12 +18,8 @@ namespace Ride
             t.Elapsed += new ElapsedEventHandler(DisplayTime);
             t.Interval = 1000; // 1000 ms is one second
             t.Start();
-
             
-            
-
-            do {
-                
+            do {                
 
                 ConsoleKeyInfo k = Console.ReadKey();             
                 char act = (char) k.Key;
@@ -56,7 +52,10 @@ namespace Ride
                     default:
                         Console.WriteLine("Put a valid action.");
                         break;
-                }  
+                        
+                }
+               // if (damaged >= 100) break;
+
             } while (true);
         }
         public int Speedup(int initialSpeed)
@@ -108,6 +107,8 @@ namespace Ride
             Console.WriteLine("Speed: " + speed + "m/s");
             Console.WriteLine("Time: " + time + "s");
             Console.WriteLine("Distance: " + dist + "m");
+            Console.WriteLine("Speed Braker: " + sBraker);
+            Console.WriteLine("Damaged: " + dam);
         }
 
         public static void DisplayTime(object source, ElapsedEventArgs e)
@@ -125,6 +126,8 @@ namespace Ride
 
         public static void Damage()
         {
+            damaged += speed - 20;
+
             Random r = new Random();
             sb = r.Next(500, 1500);
         }
