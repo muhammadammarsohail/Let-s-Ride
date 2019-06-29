@@ -3,14 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 
 namespace Ride
 {
     class Bike : IVehicle
     {
-        public int speed = 0, gear = 0;
+        public static int speed = 0, gear = 0, time = 20;
+        
         public void Go()
         {
+            Display(gear, speed);
+            Timer t = new Timer();
+            t.Elapsed += new ElapsedEventHandler(DisplayTime);
+            t.Interval = 1000; // 1000 ms is one second
+            t.Start();
+
             do {
                 
 
@@ -19,8 +27,10 @@ namespace Ride
                 char act = (char) k.Key;
              
                 if (act == 'S') break;
+                
                 switch (act)
                 {
+                    
                     case 'R':                        
                         speed = Speedup(speed);
                         Console.Clear();
@@ -91,8 +101,19 @@ namespace Ride
 
         public void Display(int gear, int speed)
         {
+            Console.Clear();
             Console.WriteLine("Gear: " + gear);
             Console.WriteLine("Speed: " + speed);
+        }
+
+        public static void DisplayTime(object source, ElapsedEventArgs e)
+        {
+            // code here will run every second
+            Bike b = new Bike();
+            time -= 1;
+            b.Display(gear, speed);
+            
+
         }
 
     }
