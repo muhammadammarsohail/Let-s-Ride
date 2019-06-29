@@ -9,7 +9,7 @@ namespace Ride
 {
     class Bike : IVehicle
     {
-        public static int speed = 0, gear = 0, time = 20;
+        public static int speed = 0, gear = 0, time = 20, dist = 0, sb;
         
         public void Go()
         {
@@ -105,6 +105,7 @@ namespace Ride
             Console.WriteLine("Gear: " + gear + "th");
             Console.WriteLine("Speed: " + speed + "m/s");
             Console.WriteLine("Time: " + time + "s");
+            Console.WriteLine("Distance: " + dist + "m");
         }
 
         public static void DisplayTime(object source, ElapsedEventArgs e)
@@ -112,6 +113,7 @@ namespace Ride
             // code here will run every second
             Bike b = new Bike();
             time -= 1;
+            dist += speed;
             b.Display(gear, speed, time);
             
 
