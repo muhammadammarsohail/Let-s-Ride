@@ -13,7 +13,7 @@ namespace Ride
         
         public void Go()
         {
-            Display(gear, speed);
+            Display(gear, speed, time);
             Timer t = new Timer();
             t.Elapsed += new ElapsedEventHandler(DisplayTime);
             t.Interval = 1000; // 1000 ms is one second
@@ -33,23 +33,23 @@ namespace Ride
                     
                     case 'R':                        
                         speed = Speedup(speed);
-                        Console.Clear();
-                        Display(gear, speed);
+                     //   Console.Clear();
+                        Display(gear, speed, time);
                         break;
                     case 'B':                       
                         speed = ApplyBrakes(speed);
-                        Console.Clear();
-                        Display(gear, speed);
+                        //    Console.Clear();
+                        Display(gear, speed, time);
                         break;
                     case 'U':                       
                         gear = ChangeGear(gear, 1);
-                        Console.Clear();
-                        Display(gear, speed);
+                        //       Console.Clear();
+                        Display(gear, speed, time);
                         break;
                     case 'D':                        
                         gear = ChangeGear(gear , 0-1);
-                        Console.Clear();
-                        Display(gear, speed);
+                        //      Console.Clear();
+                        Display(gear, speed, time);
                         break;
                     default:
                         Console.WriteLine("Put a valid action.");
@@ -99,11 +99,12 @@ namespace Ride
             return finalGear;
         }
 
-        public void Display(int gear, int speed)
+        public void Display(int gear, int speed, int time)
         {
             Console.Clear();
-            Console.WriteLine("Gear: " + gear);
-            Console.WriteLine("Speed: " + speed);
+            Console.WriteLine("Gear: " + gear + "th");
+            Console.WriteLine("Speed: " + speed + "m/s");
+            Console.WriteLine("Time: " + time + "s");
         }
 
         public static void DisplayTime(object source, ElapsedEventArgs e)
@@ -111,7 +112,7 @@ namespace Ride
             // code here will run every second
             Bike b = new Bike();
             time -= 1;
-            b.Display(gear, speed);
+            b.Display(gear, speed, time);
             
 
         }
