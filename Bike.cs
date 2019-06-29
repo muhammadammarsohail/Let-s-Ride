@@ -19,8 +19,9 @@ namespace Ride
             t.Interval = 1000; // 1000 ms is one second
             t.Start();
             
-            do {                
-
+            do {
+                if (damaged >= 100)
+                    break;
                 ConsoleKeyInfo k = Console.ReadKey();             
                 char act = (char) k.Key;
              
@@ -127,7 +128,7 @@ namespace Ride
         public static void Damage()
         {
             damaged += speed - 20;
-
+            
             Random r = new Random();
             sb = r.Next(500, 1500);
         }

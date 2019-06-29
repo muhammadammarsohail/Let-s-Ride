@@ -17,6 +17,7 @@ namespace Ride
                 case "bicycle":
                     Bicycle bi = new Bicycle();
                     bi.Go();
+                    bi.Display();
                     break;
 
                 case "motorcycle":
