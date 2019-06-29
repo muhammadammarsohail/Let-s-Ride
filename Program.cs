@@ -23,6 +23,7 @@ namespace Ride
                 case "motorcycle":
                     Motorcycle motor = new Motorcycle();
                     motor.Go();
+                    motor.Display();
                     break;
 
                 default:
@@ -33,7 +34,7 @@ namespace Ride
 
             }
 
-           // Console.ReadLine();
+            Console.ReadLine();
 
         }
     }

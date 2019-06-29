@@ -10,18 +10,21 @@ namespace Ride
     class Bike : IVehicle
     {
         public static int speed = 0, gear = 0, time = 60, dist = 0, sb = 500, damaged = 0;
-        
+
         public void Go()
         {
-            Display(gear, speed, time, sb, damaged);
+            Display();
             Timer t = new Timer();
             t.Elapsed += new ElapsedEventHandler(DisplayTime);
             t.Interval = 1000; // 1000 ms is one second
             t.Start();
-            
+
             do {
-                if (damaged >= 100)
+                if (damaged >= 100 || time <= 0)
+                {
+                    t.Enabled = false;
                     break;
+                }
                 ConsoleKeyInfo k = Console.ReadKey();             
                 char act = (char) k.Key;
              
@@ -33,22 +36,22 @@ namespace Ride
                     case 'R':                        
                         speed = Speedup(speed);
                      //   Console.Clear();
-                        Display(gear, speed, time, sb, damaged);
+                        Display();
                         break;
                     case 'B':                       
                         speed = ApplyBrakes(speed);
                         //    Console.Clear();
-                        Display(gear, speed, time, sb, damaged);
+                        Display();
                         break;
                     case 'U':                       
                         gear = ChangeGear(gear, 1);
                         //       Console.Clear();
-                        Display(gear, speed, time, sb, damaged);
+                        Display();
                         break;
                     case 'D':                        
                         gear = ChangeGear(gear , 0-1);
                         //      Console.Clear();
-                        Display(gear, speed, time, sb, damaged);
+                        Display();
                         break;
                     default:
                         Console.WriteLine("Put a valid action.");
@@ -101,15 +104,15 @@ namespace Ride
             return finalGear;
         }
 
-        public void Display(int gear, int speed, int time, int sBraker, int dam)
+        public void Display()
         {
             Console.Clear();
             Console.WriteLine("Gear: " + gear + "th");
             Console.WriteLine("Speed: " + speed + "m/s");
             Console.WriteLine("Time: " + time + "s");
             Console.WriteLine("Distance: " + dist + "m");
-            Console.WriteLine("Speed Braker: " + sBraker);
-            Console.WriteLine("Damaged: " + dam);
+            Console.WriteLine("Speed Braker: " + sb);
+            Console.WriteLine("Damaged: " + damaged);
         }
 
         public static void DisplayTime(object source, ElapsedEventArgs e)
@@ -121,7 +124,12 @@ namespace Ride
             sb -= speed;
             if (sb <= 0 && speed > 10)
                 Damage();
-            b.Display(gear, speed, time, sb, damaged);
+            if (damaged >= 100 || time <= 0)
+            {
+                b.t.Enabled = false;
+                
+            }
+            b.Display();
             
         }
 
