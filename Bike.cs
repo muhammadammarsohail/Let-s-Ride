@@ -10,23 +10,23 @@ namespace Ride
     class Bike : IVehicle
     {
         public static int speed = 0, gear = 0, time = 60, dist = 0, sb = 500, damaged;
-
+        static Timer t = new Timer();
         public void Go()
         {
             // Display();
 
-            Timer t = new Timer();
+            
             t.Elapsed += new ElapsedEventHandler(DisplayTime);
             t.Interval = 1000; // 1000 ms is one second
             t.Start();
 
-            while(damaged < 100 || time > 0)
+            do
             {
-                if (damaged >= 100 || time <= 0)
-                {
-                    t.Enabled = false;
-                    break;
-                }
+                //if (damaged >= 100 || time <= 0)
+                //{
+                //    t.Enabled = false;
+                //    break;
+                //}
 
                 ConsoleKeyInfo k = Console.ReadKey();             
                 char act = (char) k.Key;
@@ -61,20 +61,22 @@ namespace Ride
                         break;
 
                        
-                }
-                if (damaged >= 100 || time <= 0)
-                {
-                    t.Enabled = false;
-                    break;
-                }
+                } 
+
                 // if (damaged >= 100) break;
 
-            }
+            } while (damaged < 100 && time > 0);
+
+            
+            if (damaged >= 100 || time <= 0)
+                t.Enabled = false;
+
         }
         public int Speedup(int initialSpeed)
         {
             int finalSpeed = initialSpeed;
-            switch (gear) {
+            switch (gear)
+            {
                 case 1:
                     if(initialSpeed < 20)
             finalSpeed = initialSpeed + 5;
@@ -123,10 +125,11 @@ namespace Ride
             Console.WriteLine("Speed Braker: " + sb);
             Console.WriteLine("Damaged: " + damaged);
 
-            if (damaged >= 100 || time <= 0)
-            {
-                Go();
-            }
+            //Bike b = new Bike();
+            //if (damaged >= 100 || time <= 0)
+            //{
+            //    Bike.t.Enabled = false;
+            //}
         }
 
         public static void DisplayTime(object source, ElapsedEventArgs e)
@@ -139,17 +142,13 @@ namespace Ride
             if (sb <= 0 && speed > 10)
                 Damage();
             b.Display();
-                      
+           
         }
 
         public static void Damage()
         {
             damaged += speed - 20;
-            //if (damaged >= 100 || time <= 0)
-            //{
-            //    Bike b = new Bike();
-                
-            //}
+           
             Random r = new Random();
             sb = r.Next(500, 1500);
         }
