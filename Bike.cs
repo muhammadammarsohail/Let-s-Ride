@@ -31,27 +31,27 @@ namespace Ride
                 ConsoleKeyInfo k = Console.ReadKey();             
                 char act = (char) k.Key;
              
-                if (act == 'S') break;
+              //  if (act == 'S') break;
                 
                 switch (act)
                 {
                     
-                    case 'R':                        
+                    case 'W':                        
                         speed = Speedup(speed);
                      //   Console.Clear();
                         Display();
                         break;
-                    case 'B':                       
+                    case 'S':                       
                         speed = ApplyBrakes(speed);
                         //    Console.Clear();
                         Display();
                         break;
-                    case 'U':                       
+                    case 'D':                       
                         gear = ChangeGear(gear, 1);
                         //       Console.Clear();
                         Display();
                         break;
-                    case 'D':                        
+                    case 'A':                        
                         gear = ChangeGear(gear , 0-1);
                         //      Console.Clear();
                         Display();
@@ -122,8 +122,8 @@ namespace Ride
             Console.WriteLine("Speed: " + speed + "m/s");
             Console.WriteLine("Time: " + time + "s");
             Console.WriteLine("Distance: " + dist + "m");
-            Console.WriteLine("Speed Braker: " + sb);
-            Console.WriteLine("Damaged: " + damaged);
+            Console.WriteLine("Speed Braker: " + sb + "m");
+            Console.WriteLine("Damaged: " + damaged + "%");
 
             //Bike b = new Bike();
             //if (damaged >= 100 || time <= 0)
@@ -135,19 +135,34 @@ namespace Ride
         public static void DisplayTime(object source, ElapsedEventArgs e)
         {
             // code here will run every second
-            Bike b = new Bike();
-            time -= 1;
-            dist += speed;
-            sb -= speed;
-            if (sb <= 0 && speed > 10)
-                Damage();
-            b.Display();
+
+            {
+                Bike b = new Bike();
+
+                if (damaged < 100 && time >= 1)
+                {
+                    
+                    time -= 1;
+                    dist += speed;
+                    sb -= speed;
+                    if (sb <= 0 && speed > 10)
+                        Damage();
+                    b.Display();
+                }
+                //else
+                //{
+                //    damaged = 100;
+                //    b.Display();
+                //}
+            }
            
         }
 
         public static void Damage()
         {
             damaged += speed - 20;
+            if (damaged < 0) damaged = 0;
+            if (damaged >= 100) damaged = 100;
            
             Random r = new Random();
             sb = r.Next(500, 1500);
