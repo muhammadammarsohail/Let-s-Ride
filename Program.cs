@@ -11,6 +11,7 @@ namespace Ride
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("What do you want to ride?");
             string vehicle = Console.ReadLine();
             switch (vehicle)
             {

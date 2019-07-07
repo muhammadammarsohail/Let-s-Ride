@@ -9,7 +9,7 @@ namespace Ride
 {
     class Bike : IVehicle
     {
-        public static int speed = 0, gear = 0, time = 60, dist = 0, sb = 500, damaged;
+        public static int speed = 0, gear = 0, time = 60, dist = 0, sb, damaged;
         static Random r = new Random();
         static Timer t = new Timer();
         public void Go()
@@ -83,11 +83,11 @@ namespace Ride
             finalSpeed = initialSpeed + 5;
                     break;
                 case 2:
-                    if(initialSpeed < 30 && initialSpeed > 5)
+                    if(initialSpeed < 45 && initialSpeed > 10)
                      finalSpeed = initialSpeed + 5;
                     break;
                 case 3:
-                    if (initialSpeed < 60 && initialSpeed > 20)
+                    if (initialSpeed < 70 && initialSpeed > 30)
                         finalSpeed = initialSpeed + 5;
                     break;
                 case 4:
