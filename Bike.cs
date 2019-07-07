@@ -10,6 +10,7 @@ namespace Ride
     class Bike : IVehicle
     {
         public static int speed = 0, gear = 0, time = 60, dist = 0, sb = 500, damaged;
+        static Random r = new Random();
         static Timer t = new Timer();
         public void Go()
         {
@@ -145,8 +146,14 @@ namespace Ride
                     time -= 1;
                     dist += speed;
                     sb -= speed;
-                    if (sb <= 0 && speed > 10)
-                        Damage();
+                    if (sb <= 0)
+                    {
+                        
+                        sb = r.Next(500, 1500);
+
+                        if (speed > 10)
+                            Damage();
+                    }
                     b.Display();
                 }
                 //else
@@ -162,11 +169,11 @@ namespace Ride
         {
             damaged += speed - 20;
             if (damaged < 0) damaged = 0;
-            if (damaged >= 100) damaged = 100;
+            if (damaged > 100) damaged = 100;
            
-            Random r = new Random();
-            sb = r.Next(500, 1500);
+            
         }
 
+         
     }
 }
