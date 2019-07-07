@@ -49,5 +49,10 @@ namespace Ride
             }
             return finalSpeed;
         }
+
+        //public override void Damage()
+        //{
+            
+        //}
     }
 }

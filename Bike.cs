@@ -7,7 +7,7 @@ using System.Timers;
 
 namespace Ride
 {
-    abstract class Bike : IRun, IPlay
+    class Bike : IRun, IPlay
     {
         public static int speed = 0, gear = 0, time = 60, dist = 0, sb, damaged;
         static Random r = new Random();
@@ -138,7 +138,7 @@ namespace Ride
             // code here will run every second
 
             {
-                Bike b = new Bike();
+              Bike b = new Bike();
 
                 if (damaged < 100 && time >= 1)
                 {
@@ -165,12 +165,11 @@ namespace Ride
            
         }
 
-        public abstract void Damage();
-        //{
-        //    damaged += speed - 20;
-        //    if (damaged < 0) damaged = 0;
-        //    if (damaged > 100) damaged = 100;
-        //}
+        public virtual void Damage()
+        {
+            damaged = 100;
+        }
+        
 
          
     }

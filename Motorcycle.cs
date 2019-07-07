@@ -8,5 +8,11 @@ namespace Ride
 {
     class Motorcycle : Bike
     {
+        public override void Damage()
+        {
+            damaged += speed - 20;
+            if (damaged < 0) damaged = 0;
+            if (damaged > 100) damaged = 100;
+        }
     }
 }
