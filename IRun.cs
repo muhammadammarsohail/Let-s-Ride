@@ -8,7 +8,7 @@ namespace Ride
 {
     interface IRun
     {
-        void Go();
+      //  void Go();
         int Speedup(int initialSpeed);
         int ApplyBrakes(int initialSpeed);
         int ChangeGear(int initialGear, int change);

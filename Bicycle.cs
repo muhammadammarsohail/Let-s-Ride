@@ -8,6 +8,11 @@ namespace Ride
 {
     class Bicycle : Bike
     {
+        //public Bicycle() : base()
+        //{
+            
+        //}
+       
         public override int Speedup(int initialSpeed)
         {
             int finalSpeed = initialSpeed;

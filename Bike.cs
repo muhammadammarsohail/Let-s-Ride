@@ -12,7 +12,7 @@ namespace Ride
         public static int speed = 0, gear = 0, time = 60, dist = 0, sb, damaged;
         static Random r = new Random();
         static Timer t = new Timer();
-        public void Go()
+        public Bike()
         {
             // Display();
 
@@ -68,7 +68,7 @@ namespace Ride
 
             } while (damaged < 100 && time > 0);
 
-            
+            Display();
             if (damaged >= 100 || time <= 0)
                 t.Enabled = false;
 
