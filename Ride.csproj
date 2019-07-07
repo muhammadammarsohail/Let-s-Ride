@@ -45,10 +45,11 @@
   <ItemGroup>
     <Compile Include="Bicycle.cs" />
     <Compile Include="Bike.cs" />
+    <Compile Include="IPlay.cs" />
     <Compile Include="Motorcycle.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="IVehicle.cs" />
+    <Compile Include="IRun.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

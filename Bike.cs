@@ -7,7 +7,7 @@ using System.Timers;
 
 namespace Ride
 {
-    class Bike : IVehicle
+    abstract class Bike : IRun, IPlay
     {
         public static int speed = 0, gear = 0, time = 60, dist = 0, sb, damaged;
         static Random r = new Random();
@@ -73,7 +73,7 @@ namespace Ride
                 t.Enabled = false;
 
         }
-        public int Speedup(int initialSpeed)
+        public virtual int Speedup(int initialSpeed)
         {
             int finalSpeed = initialSpeed;
             switch (gear)
@@ -152,7 +152,7 @@ namespace Ride
                         sb = r.Next(500, 1500);
 
                         if (speed > 10)
-                            Damage();
+                            b.Damage();
                     }
                     b.Display();
                 }
@@ -165,14 +165,12 @@ namespace Ride
            
         }
 
-        public static void Damage()
-        {
-            damaged += speed - 20;
-            if (damaged < 0) damaged = 0;
-            if (damaged > 100) damaged = 100;
-           
-            
-        }
+        public abstract void Damage();
+        //{
+        //    damaged += speed - 20;
+        //    if (damaged < 0) damaged = 0;
+        //    if (damaged > 100) damaged = 100;
+        //}
 
          
     }
