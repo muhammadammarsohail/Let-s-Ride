@@ -17,6 +17,7 @@ namespace Ride
             {
                 case "bicycle":
                     Bicycle bi = new Bicycle();
+                    Bike.gear = 1;
                     bi.Go();
                     bi.Display();
                     bi.Score();

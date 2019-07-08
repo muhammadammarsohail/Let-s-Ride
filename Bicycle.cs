@@ -13,6 +13,7 @@ namespace Ride
         //{
 
         //}
+        
 
         public override int Speedup(int initialSpeed)
         {
@@ -64,7 +65,7 @@ namespace Ride
         public override int ChangeGear(int initialGear, int change)
         {
             int finalGear = initialGear + change;
-            if (finalGear < 0 || finalGear > 6) finalGear = initialGear;
+            if (finalGear < 1 || finalGear > 6) finalGear = initialGear;
             return finalGear;
         }
 

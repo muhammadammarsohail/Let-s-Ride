@@ -13,10 +13,7 @@ namespace Ride
         static protected Random r = new Random();
         static readonly Timer t = new Timer();
         public void Go()
-        {
-            // Display();
-
-            
+        {            
             t.Elapsed += new ElapsedEventHandler(DisplayTime);
             t.Interval = 1000; // 1000 ms is one second
             t.Start();
