@@ -7,12 +7,12 @@ using System.Timers;
 
 namespace Ride
 {
-    class Bike : IRun, IPlay
+    abstract class Bike : IRun, IPlay
     {
         public static int speed = 0, gear = 0, time = 60, dist = 0, sb, damaged;
-        static Random r = new Random();
-        static Timer t = new Timer();
-        public Bike()
+        static protected Random r = new Random();
+        static readonly Timer t = new Timer();
+        public void Go()
         {
             // Display();
 
@@ -106,15 +106,16 @@ namespace Ride
             int finalSpeed = initialSpeed;
             if (initialSpeed > 0)
             finalSpeed = initialSpeed - 5;
+            if (finalSpeed < 0) finalSpeed = 0;
             return finalSpeed;
         }
 
-        public int ChangeGear(int initialGear, int change)
-        {
-            int finalGear = initialGear + change;
-            if (finalGear < 0 || finalGear > 4) finalGear = initialGear;
-            return finalGear;
-        }
+        public abstract int ChangeGear(int initialGear, int change);
+        //{
+        //    int finalGear = initialGear + change;
+        //    if (finalGear < 0 || finalGear > 4) finalGear = initialGear;
+        //    return finalGear;
+        //}
 
         public void Display()
         {
@@ -133,12 +134,12 @@ namespace Ride
             //}
         }
 
-        public static void DisplayTime(object source, ElapsedEventArgs e)
+        public virtual void DisplayTime(object source, ElapsedEventArgs e)
         {
             // code here will run every second
 
             {
-              Bike b = new Bike();
+             // Bike b = new Bike();
 
                 if (damaged < 100 && time >= 1)
                 {
@@ -152,9 +153,9 @@ namespace Ride
                         sb = r.Next(500, 1500);
 
                         if (speed > 10)
-                            b.Damage();
+                            Damage();
                     }
-                    b.Display();
+                    Display();
                 }
                 //else
                 //{

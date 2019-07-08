@@ -8,7 +8,7 @@ namespace Ride
 {
     interface IPlay
     {
-       // void Go();
+        void Go();
         void Damage();
         void Display();        
     }

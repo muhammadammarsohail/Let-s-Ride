@@ -14,5 +14,13 @@ namespace Ride
             if (damaged < 0) damaged = 0;
             if (damaged > 100) damaged = 100;
         }
+
+        public override int ChangeGear(int initialGear, int change)
+        {
+            int finalGear = initialGear + change;
+            if (finalGear < 0 || finalGear > 4) finalGear = initialGear;
+            return finalGear;
+        }
+
     }
 }
