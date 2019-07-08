@@ -34,8 +34,6 @@ namespace Ride
                     Console.WriteLine("You don't have the vehicle");
                     Console.ReadKey();
                     break;
-
-
             }
 
             Console.ReadLine();

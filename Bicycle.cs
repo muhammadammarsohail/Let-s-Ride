@@ -9,14 +9,9 @@ namespace Ride
 {
     class Bicycle : Bike
     {
-        //public Bicycle() : base()
-        //{
-
-        //}
-        
-
         public override int Speedup(int initialSpeed)
         {
+
             int finalSpeed;
             switch (gear)
             {
@@ -57,11 +52,6 @@ namespace Ride
             return finalSpeed;
         }
 
-        //public override void Damage()
-        //{
-
-        //}
-
         public override int ChangeGear(int initialGear, int change)
         {
             int finalGear = initialGear + change;
@@ -98,10 +88,9 @@ namespace Ride
         {
             int score = dist + (100 - damaged) + time;
             string path = "BScores.txt";
-            System.IO.File.AppendAllText(path , score.ToString() + System.Environment.NewLine);
+            System.IO.File.AppendAllText(path, score.ToString() + System.Environment.NewLine);
             Display(path, score);
         }
-
         
     }
 }

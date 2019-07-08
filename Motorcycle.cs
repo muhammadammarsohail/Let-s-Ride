@@ -10,8 +10,7 @@ namespace Ride
     {
         public override void Damage()
         {
-            damaged += speed - 20;   // damaged = damaged + speed -20;
-         //   if (damaged < 0) damaged = 0;
+            damaged += speed - 20;   
             if (damaged > 100) damaged = 100;
         }
 
@@ -30,5 +29,5 @@ namespace Ride
             Display(path, score);
         }
 
-}
+    }
 }
