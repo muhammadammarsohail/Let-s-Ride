@@ -10,6 +10,7 @@ namespace Ride
     {
         void Go();
         void Damage();
-        void Display();        
+        void Display();
+        void Score();
     }
 }

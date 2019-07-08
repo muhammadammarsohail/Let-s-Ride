@@ -22,5 +22,11 @@ namespace Ride
             return finalGear;
         }
 
-    }
+        public override void Score()
+        {
+            int score = dist + (100 - damaged) + time;
+            System.IO.File.AppendAllText("MScores.txt" , score.ToString());
+        }
+
+}
 }

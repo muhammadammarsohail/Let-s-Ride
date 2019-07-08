@@ -87,5 +87,15 @@ namespace Ride
                 Display();
             }
         }
+
+        public override void Score()
+        {
+            int score = dist + (100 - damaged) + time;
+            string path = "BScores.txt";
+            System.IO.File.AppendAllText(path , score.ToString());
+            Display(path);
+        }
+
+        
     }
 }

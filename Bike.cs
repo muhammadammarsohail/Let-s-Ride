@@ -70,7 +70,10 @@ namespace Ride
 
             Display();
             if (damaged >= 100 || time <= 0)
+            {
                 t.Enabled = false;
+                Score();
+            }
 
         }
         public virtual int Speedup(int initialSpeed)
@@ -170,8 +173,22 @@ namespace Ride
         {
             damaged = 100;
         }
-        
 
-         
+        public abstract void Score();
+        //{
+        //    int score = dist + (100 - damaged) + time;
+        //    System.IO.File.AppendAllText("Scores.txt" , score.ToString());
+        //}
+
+        protected static void Display(string path)
+        {
+            string[] his = System.IO.File.ReadAllLines(path);
+            int[] hist = new int[his.Length];
+            for (int i = 0; i < hist.Length; i++)
+            {
+                hist[i] = Convert.ToInt32(his[i]);
+            }
+        }
+
     }
 }
