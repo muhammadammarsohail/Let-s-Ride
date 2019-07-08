@@ -19,12 +19,14 @@ namespace Ride
                     Bicycle bi = new Bicycle();
                     bi.Go();
                     bi.Display();
+                    bi.Score();
                     break;
 
                 case "motorcycle":
                     Motorcycle motor = new Motorcycle();
                     motor.Go();
                     motor.Display();
+                    motor.Score();
                     break;
 
                 default:

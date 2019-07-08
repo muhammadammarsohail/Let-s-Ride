@@ -9,7 +9,7 @@ namespace Ride
 {
     abstract class Bike : IRun, IPlay
     {
-        public static int speed = 0, gear = 0, time = 60, dist = 0, sb, damaged;
+        public static int speed = 0, gear = 0, time = 60, dist = 0, sb, damaged, count =0;
         static protected Random r = new Random();
         static readonly Timer t = new Timer();
         public void Go()
@@ -69,11 +69,11 @@ namespace Ride
             } while (damaged < 100 && time > 0);
 
             Display();
-            if (damaged >= 100 || time <= 0)
-            {
+            //if (damaged >= 100 || time <= 0)
+            //{
+             //   Score();
                 t.Enabled = false;
-                Score();
-            }
+          //  }
 
         }
         public virtual int Speedup(int initialSpeed)
@@ -90,11 +90,11 @@ namespace Ride
                      finalSpeed = initialSpeed + 5;
                     break;
                 case 3:
-                    if (initialSpeed < 70 && initialSpeed > 30)
+                    if (initialSpeed < 80 && initialSpeed > 30)
                         finalSpeed = initialSpeed + 5;
                     break;
                 case 4:
-                    if (initialSpeed < 120 && initialSpeed > 40)
+                    if (initialSpeed < 180 && initialSpeed > 40)
                         finalSpeed = initialSpeed + 5;
                     break;
                 default:
@@ -142,23 +142,29 @@ namespace Ride
             // code here will run every second
 
             {
-             // Bike b = new Bike();
+                // Bike b = new Bike();
 
                 if (damaged < 100 && time >= 1)
                 {
-                    
+
                     time -= 1;
                     dist += speed;
                     sb -= speed;
                     if (sb <= 0)
                     {
-                        
+
                         sb = r.Next(500, 1500);
 
-                        if (speed > 10)
+                        if (speed > 20)
                             Damage();
                     }
                     Display();
+                }
+                
+                else if (count == 0)
+                {
+                    Score();
+                    count++;
                 }
                 //else
                 //{
@@ -180,14 +186,32 @@ namespace Ride
         //    System.IO.File.AppendAllText("Scores.txt" , score.ToString());
         //}
 
-        protected static void Display(string path)
+        protected void Display(string path, int score)
         {
             string[] his = System.IO.File.ReadAllLines(path);
-            int[] hist = new int[his.Length];
-            for (int i = 0; i < hist.Length; i++)
+         //   int[] hist = new int[his.Length];
+            int best = 0;
+            for (int i = 0; i < his.Length; i++)
             {
-                hist[i] = Convert.ToInt32(his[i]);
+           //     hist[i] = Convert.ToInt32(his[i]);
+                if (Convert.ToInt32(his[i]) > best) best = Convert.ToInt32(his[i]);
             }
+
+            Console.WriteLine("Your Score: " + score);
+            Console.WriteLine("Best Score: " + best);
+
+
+
+            //for (int i = 0; i < hist.Length; i++)
+            //{
+            //    for (int j = 0; j < hist.Length - 1; j++)
+            //    {
+            //        if(hist[j] )
+            //    }
+
+            //}
+
+
         }
 
     }

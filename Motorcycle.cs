@@ -10,8 +10,8 @@ namespace Ride
     {
         public override void Damage()
         {
-            damaged += speed - 20;
-            if (damaged < 0) damaged = 0;
+            damaged += speed - 20;   // damaged = damaged + speed -20;
+         //   if (damaged < 0) damaged = 0;
             if (damaged > 100) damaged = 100;
         }
 
@@ -25,7 +25,9 @@ namespace Ride
         public override void Score()
         {
             int score = dist + (100 - damaged) + time;
-            System.IO.File.AppendAllText("MScores.txt" , score.ToString());
+            string path = "MScores.txt";
+            System.IO.File.AppendAllText(path, score.ToString() + System.Environment.NewLine);
+            Display(path, score);
         }
 
 }

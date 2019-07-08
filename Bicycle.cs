@@ -16,38 +16,38 @@ namespace Ride
 
         public override int Speedup(int initialSpeed)
         {
-            int finalSpeed = initialSpeed;
+            int finalSpeed;
             switch (gear)
             {
                 case 1:
                     if (initialSpeed < 10)
-                        finalSpeed = initialSpeed + 1;
-                   // else if (initialSpeed < 38) finalSpeed = initialSpeed + 1;
+                        finalSpeed = initialSpeed + 3;
+                    else finalSpeed = initialSpeed + 1;
                     break;
                 case 2:
                     if (initialSpeed < 15 && initialSpeed > 5)
                         finalSpeed = initialSpeed + 3;
-                //    else if (initialSpeed < 38) finalSpeed = initialSpeed + 1;
+                    else finalSpeed = initialSpeed + 1;
                     break;
                 case 3:
                     if (initialSpeed < 20 && initialSpeed > 10)
                         finalSpeed = initialSpeed + 3;
-              //      else if (initialSpeed < 38) finalSpeed = initialSpeed + 1;
+                    else finalSpeed = initialSpeed + 1;
                     break;
                 case 4:
                     if (initialSpeed < 25 && initialSpeed > 15)
                         finalSpeed = initialSpeed + 3;
-             //       else if (initialSpeed < 38) finalSpeed = initialSpeed + 1;
+                    else finalSpeed = initialSpeed + 1;
                     break;
                 case 5:
                     if (initialSpeed < 33 && initialSpeed > 20)
                         finalSpeed = initialSpeed + 3;
-              //      else if (initialSpeed < 38) finalSpeed = initialSpeed + 1;
+                    else finalSpeed = initialSpeed + 1;
                     break;
                 case 6:
                     if (initialSpeed < 38 && initialSpeed > 30)
                         finalSpeed = initialSpeed + 3;
-              //      else if (initialSpeed < 38) finalSpeed = initialSpeed + 1;
+                    else finalSpeed = initialSpeed + 1;
                     break;
                 default:
                     finalSpeed = initialSpeed;
@@ -81,10 +81,15 @@ namespace Ride
 
                     sb = r.Next(70, 150);
 
-                    if (speed > 10)
+                    if (speed > 20)
                         Damage();
                 }
                 Display();
+            }
+            else if (count == 0)
+            {
+                Score();
+                count++;
             }
         }
 
@@ -92,8 +97,8 @@ namespace Ride
         {
             int score = dist + (100 - damaged) + time;
             string path = "BScores.txt";
-            System.IO.File.AppendAllText(path , score.ToString());
-            Display(path);
+            System.IO.File.AppendAllText(path , score.ToString() + System.Environment.NewLine);
+            Display(path, score);
         }
 
         
