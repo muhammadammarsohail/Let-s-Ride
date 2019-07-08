@@ -17,8 +17,8 @@ namespace Ride
             {
                 case 1:
                     if (initialSpeed < 10)
-                        finalSpeed = initialSpeed + 3;
-                    else finalSpeed = initialSpeed + 1;
+                        finalSpeed = initialSpeed + 3;      // Suitable gear gives a good acceleration
+                    else finalSpeed = initialSpeed + 1;     // Others doesn't
                     break;
                 case 2:
                     if (initialSpeed < 15 && initialSpeed > 5)
@@ -63,10 +63,9 @@ namespace Ride
         {
             if (damaged < 100 && time >= 1)
             {
-
                 time -= 1;
                 dist += speed;
-                sb -= speed;
+                sb -= speed;        // speed breaker is getting closer each second
                 if (sb <= 0)
                 {
 

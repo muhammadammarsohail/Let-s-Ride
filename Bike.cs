@@ -12,6 +12,11 @@ namespace Ride
         public static int speed = 0, gear = 0, time = 60, dist = 0, sb, damaged, count = 0;
         static protected Random r = new Random();
         static readonly Timer t = new Timer();
+
+        public abstract int ChangeGear(int initialGear, int change);
+
+        public abstract void Score();
+
         public void Go()
         {
             t.Elapsed += new ElapsedEventHandler(DisplayTime);
@@ -27,24 +32,24 @@ namespace Ride
                 {
                     case 'W':
                         speed = Speedup(speed);
-                        //   Console.Clear();
                         Display();
                         break;
+
                     case 'S':
                         speed = ApplyBrakes(speed);
-                        //    Console.Clear();
                         Display();
                         break;
+
                     case 'D':
                         gear = ChangeGear(gear, 1);
-                        //       Console.Clear();
                         Display();
                         break;
+
                     case 'A':
                         gear = ChangeGear(gear, 0 - 1);
-                        //      Console.Clear();
                         Display();
                         break;
+
                     default:
                         Console.WriteLine("Put a valid action.");
                         break;
@@ -53,7 +58,7 @@ namespace Ride
             } while (damaged < 100 && time > 0);
 
             Display();
-            t.Enabled = false;
+            t.Enabled = false;  // Stops the timer
         }
 
         public virtual int Speedup(int initialSpeed)
@@ -93,19 +98,6 @@ namespace Ride
             return finalSpeed;
         }
 
-        public abstract int ChangeGear(int initialGear, int change);
-
-        public void Display()
-        {
-            Console.Clear();
-            Console.WriteLine("Gear: " + gear + "th");
-            Console.WriteLine("Speed: " + speed + "m/s");
-            Console.WriteLine("Time: " + time + "s");
-            Console.WriteLine("Distance: " + dist + "m");
-            Console.WriteLine("Speed Braker: " + sb + "m");
-            Console.WriteLine("Damaged: " + damaged + "%");
-        }
-
         public virtual void DisplayTime(object source, ElapsedEventArgs e)
         {
             // code here will run every second
@@ -117,7 +109,7 @@ namespace Ride
                     sb -= speed;
                     if (sb <= 0)
                     {
-                        sb = r.Next(500, 1500);
+                        sb = r.Next(500, 1500);     // The next speed breaker
 
                         if (speed > 20)
                             Damage();
@@ -138,18 +130,29 @@ namespace Ride
             damaged = 100;
         }
 
-        public abstract void Score();
+        public void Display()
+        {
+            Console.Clear();
+            Console.WriteLine();
+            if (gear == 0) Console.Write("\t\tGear: N");
+            else Console.Write("\t\tGear: " + gear);
+            Console.WriteLine("\t\t\t\t\tTime: " + time + " sec");
+            Console.Write("\t\tSpeed: " + speed + " m/s");
+            Console.WriteLine("\t\t\t\tDistance: " + dist + " m");
+            Console.Write("\t\tSpeed Braker: " + sb + " m");
+            Console.WriteLine("\t\t\tDamaged: " + damaged + "%");
+        }
 
         protected void Display(string path, int score)
         {
-            string[] his = System.IO.File.ReadAllLines(path);
+            string[] hist = System.IO.File.ReadAllLines(path);
 
             int best = 0;
-            for (int i = 0; i < his.Length; i++)
-                if (Convert.ToInt32(his[i]) > best) best = Convert.ToInt32(his[i]);            
+            for (int i = 0; i < hist.Length; i++)
+                if (Convert.ToInt32(hist[i]) > best) best = Convert.ToInt32(hist[i]);
 
-            Console.WriteLine("Your Score: " + score);
-            Console.WriteLine("Best Score: " + best);
+            Console.WriteLine("\n\n\t\t\t\tYour Score: " + score);
+            Console.WriteLine("\t\t\t\tBest Score: " + best);
 
         }
     }

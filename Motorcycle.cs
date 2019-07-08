@@ -10,7 +10,7 @@ namespace Ride
     {
         public override void Damage()
         {
-            damaged += speed - 20;   
+            damaged += speed - 20;   // 1 m/s of overspeed produces 1% damage
             if (damaged > 100) damaged = 100;
         }
 
