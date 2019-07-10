@@ -11,10 +11,10 @@ namespace Ride
     {
         static void Main()
         {
-            Console.WriteLine("LET'S RIDE");
+            Console.WriteLine("\n\n\n\n\t\t\t\t   LET'S RIDE");
             System.Threading.Thread.Sleep(2000);
             Console.Clear();
-            Console.WriteLine("MOTORCYCLE or BICYCLE?");
+            Console.WriteLine("\n\n\n\n\t\t\t\t   MOTORCYCLE or BICYCLE?");
             string vehicle;
             do
             {
@@ -50,7 +50,7 @@ namespace Ride
             do
             {
                 end = Console.ReadLine();
-            } while (end != "quit" && end != "QUIT" || end != "Quit");
+            } while (end != "quit" && end != "QUIT" && end != "Quit");
 
         }
     }

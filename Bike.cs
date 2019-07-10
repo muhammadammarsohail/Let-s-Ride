@@ -17,9 +17,10 @@ namespace Ride
         public Bike()
         {
             Console.Clear();
-            Console.WriteLine("READY!");
+            Console.WriteLine("\n\n\n\n\t\t\t\t   READY!");
             System.Threading.Thread.Sleep(1000);
-            Console.WriteLine("STEADY!");
+            Console.Clear();
+            Console.WriteLine("\n\n\n\n\t\t\t\t   STEADY!");
             System.Threading.Thread.Sleep(1000);
         }
 

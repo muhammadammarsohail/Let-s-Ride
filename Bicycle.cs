@@ -12,9 +12,11 @@ namespace Ride
 
         public Bicycle() : base()
         {
-            Console.WriteLine(status);
+            Console.Clear();
+            Console.WriteLine("\n\n\n\n\t\t\t\t   " + status);
             System.Threading.Thread.Sleep(1000);
-            Console.WriteLine("GO!");
+            Console.Clear();
+            Console.WriteLine("\n\n\n\n\t\t\t\t   GO!");
         }
 
         string status = "KEEP CAPSLOCK ON";

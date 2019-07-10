@@ -10,7 +10,8 @@ namespace Ride
     {
         public Motorcycle() : base()
         {
-            Console.WriteLine("GO!");
+            Console.Clear();
+            Console.WriteLine("\n\n\n\n\t\t\t\t   GO!");
         }
 
         public override string Input()
