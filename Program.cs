@@ -36,7 +36,11 @@ namespace Ride
                     break;
             }
 
-            Console.ReadLine();
+            string end;
+            do
+            {
+                end = Console.ReadLine();
+            } while (end != "quit");
 
         }
     }

@@ -12,10 +12,13 @@ namespace Ride
         public static int speed = 0, gear = 0, time = 60, dist = 0, sb, damaged, count = 0;
         static protected Random r = new Random();
         static readonly Timer t = new Timer();
+        string act;
 
         public abstract int ChangeGear(int initialGear, int change);
 
         public abstract void Score();
+
+        public abstract string Input();
 
         public void Go()
         {
@@ -25,27 +28,26 @@ namespace Ride
 
             do
             {
-                ConsoleKeyInfo k = Console.ReadKey();
-                char act = (char)k.Key;
+                act = Input();
 
                 switch (act)
                 {
-                    case 'W':
+                    case "W":
                         speed = Speedup(speed);
                         Display();
                         break;
 
-                    case 'S':
+                    case "S":
                         speed = ApplyBrakes(speed);
                         Display();
                         break;
 
-                    case 'D':
+                    case "D":
                         gear = ChangeGear(gear, 1);
                         Display();
                         break;
 
-                    case 'A':
+                    case "A":
                         gear = ChangeGear(gear, 0 - 1);
                         Display();
                         break;
@@ -68,19 +70,19 @@ namespace Ride
             {
                 case 1:
                     if (initialSpeed < 20)
-                        finalSpeed = initialSpeed + 5;
+                        finalSpeed = initialSpeed + 1;
                     break;
                 case 2:
-                    if (initialSpeed < 45 && initialSpeed > 10)
-                        finalSpeed = initialSpeed + 5;
+                    if (initialSpeed < 45 && initialSpeed > 9)
+                        finalSpeed = initialSpeed + 1;
                     break;
                 case 3:
-                    if (initialSpeed < 80 && initialSpeed > 30)
-                        finalSpeed = initialSpeed + 5;
+                    if (initialSpeed < 70 && initialSpeed > 34)
+                        finalSpeed = initialSpeed + 1;
                     break;
                 case 4:
-                    if (initialSpeed < 180 && initialSpeed > 40)
-                        finalSpeed = initialSpeed + 5;
+                    if (initialSpeed < 140 && initialSpeed > 59)
+                        finalSpeed = initialSpeed + 1;
                     break;
                 default:
                     finalSpeed = initialSpeed;
@@ -93,7 +95,7 @@ namespace Ride
         {
             int finalSpeed = initialSpeed;
             if (initialSpeed > 0)
-                finalSpeed = initialSpeed - 5;
+                finalSpeed = initialSpeed - 3;
             if (finalSpeed < 0) finalSpeed = 0;
             return finalSpeed;
         }
@@ -151,7 +153,7 @@ namespace Ride
             for (int i = 0; i < hist.Length; i++)
                 if (Convert.ToInt32(hist[i]) > best) best = Convert.ToInt32(hist[i]);
 
-            Console.WriteLine("\n\n\t\t\t\t    Game Over!");
+            Console.WriteLine("\n\n\t\t\t\t   Game Over!");
             Console.WriteLine("\n\t\t\t\tYour Score: " + score);
             Console.WriteLine("\t\t\t\tBest Score: " + best);
 

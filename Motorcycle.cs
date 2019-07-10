@@ -8,6 +8,12 @@ namespace Ride
 {
     class Motorcycle : Bike
     {
+        public override string Input()
+        {
+            ConsoleKeyInfo k = Console.ReadKey();
+            string action = k.Key.ToString();
+            return action;
+        }
         public override void Damage()
         {
             damaged += speed - 20;   // 1 m/s of overspeed produces 1% damage

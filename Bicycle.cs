@@ -9,6 +9,11 @@ namespace Ride
 {
     class Bicycle : Bike
     {
+        public override string Input()
+        {
+            string action = Console.ReadLine();
+            return action;
+        }
         public override int Speedup(int initialSpeed)
         {
 
