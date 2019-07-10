@@ -9,13 +9,22 @@ namespace Ride
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             Console.WriteLine("LET'S RIDE");
             System.Threading.Thread.Sleep(2000);
             Console.Clear();
             Console.WriteLine("MOTORCYCLE or BICYCLE?");
-            string vehicle = Console.ReadLine();
+            string vehicle;
+            do
+            {
+                vehicle = Console.ReadLine();
+                if (vehicle == "BICYCLE" || vehicle == "Bicycle") vehicle = "bicycle";
+                else if (vehicle == "MOTORCYCLE" || vehicle == "Motorcycle") vehicle = "motorcycle";
+                else Console.WriteLine("You don't have the vehicle");
+
+            } while (vehicle != "bicycle" && vehicle != "motorcycle");            
+
             switch (vehicle)
             {
                 case "bicycle":
@@ -34,8 +43,6 @@ namespace Ride
                     break;
 
                 default:
-                    Console.WriteLine("You don't have the vehicle");
-                    Console.ReadKey();
                     break;
             }
 
@@ -43,7 +50,7 @@ namespace Ride
             do
             {
                 end = Console.ReadLine();
-            } while (end != "quit");
+            } while (end != "quit" && end != "QUIT" || end != "Quit");
 
         }
     }

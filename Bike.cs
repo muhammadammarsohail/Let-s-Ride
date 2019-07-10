@@ -12,7 +12,7 @@ namespace Ride
         string act;
         public static int speed = 0, gear = 0, time = 61, dist = 0, sb, damaged, count = 0;
         static protected Random r = new Random();
-        static readonly Timer t = new Timer();
+        static Timer t = new Timer();
 
         public Bike()
         {

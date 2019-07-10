@@ -9,6 +9,7 @@ namespace Ride
     interface IPlay
     {
         void Go();
+        string Input();
         void Damage();
         void Display();
         void Score();
