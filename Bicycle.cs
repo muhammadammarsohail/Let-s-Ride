@@ -9,11 +9,15 @@ namespace Ride
 {
     class Bicycle : Bike
     {
+
+        string status = "KEEP CAPSLOCK ON";
+
         public override string Input()
         {
             string action = Console.ReadLine();
             return action;
         }
+
         public override int Speedup(int initialSpeed)
         {
 
@@ -67,6 +71,7 @@ namespace Ride
         public override void Damage()
         {
             damaged = 100;
+            status = "** WRECKED **";
         }
 
         public override void DisplayTime(object source, ElapsedEventArgs e)
@@ -93,13 +98,24 @@ namespace Ride
             }
         }
 
+        public override void Display()
+        {
+            Console.Clear();
+            Console.WriteLine();
+            if (gear == 0) Console.Write("\t\tGear: N");
+            else Console.Write("\t\tGear: " + gear);
+            Console.WriteLine("\t\t\t\t\tTime: " + time + " sec");
+            Console.Write("\t\tSpeed: " + speed + " m/s");
+            Console.WriteLine("\t\t\t\tDistance: " + dist + " m");
+            Console.Write("\t\tSpeed Braker: " + sb + " m");
+            Console.WriteLine("\t\t\t" + status);
+        }
+
         public override void Score()
         {
-            int score = dist + (100 - damaged) + time;
             string path = "BScores.txt";
-            System.IO.File.AppendAllText(path, score.ToString() + System.Environment.NewLine);
-            Display(path, score);
-        }
-        
+            System.IO.File.AppendAllText(path, dist.ToString() + System.Environment.NewLine);
+            Display(path, dist);
+        }        
     }
 }

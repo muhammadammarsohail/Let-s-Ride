@@ -108,13 +108,12 @@ namespace Ride
 
         public virtual void Score()
         {
-            int score = dist + (100 - damaged) + time;
             string path = "MScores.txt";
-            System.IO.File.AppendAllText(path, score.ToString() + System.Environment.NewLine);
-            Display(path, score);
+            System.IO.File.AppendAllText(path, dist.ToString() + System.Environment.NewLine);
+            Display(path, dist);
         }
 
-        public void Display()
+        public virtual void Display()
         {
             Console.Clear();
             Console.WriteLine();
