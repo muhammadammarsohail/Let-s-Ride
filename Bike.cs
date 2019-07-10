@@ -151,7 +151,8 @@ namespace Ride
             for (int i = 0; i < hist.Length; i++)
                 if (Convert.ToInt32(hist[i]) > best) best = Convert.ToInt32(hist[i]);
 
-            Console.WriteLine("\n\n\t\t\t\tYour Score: " + score);
+            Console.WriteLine("\n\n\t\t\t\t    Game Over!");
+            Console.WriteLine("\n\t\t\t\tYour Score: " + score);
             Console.WriteLine("\t\t\t\tBest Score: " + best);
 
         }
