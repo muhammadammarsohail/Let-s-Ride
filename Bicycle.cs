@@ -64,6 +64,11 @@ namespace Ride
             return finalGear;
         }
 
+        public override void Damage()
+        {
+            damaged = 100;
+        }
+
         public override void DisplayTime(object source, ElapsedEventArgs e)
         {
             if (damaged < 100 && time >= 1)

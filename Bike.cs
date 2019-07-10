@@ -14,11 +14,11 @@ namespace Ride
         static readonly Timer t = new Timer();
         string act;
 
-        public abstract int ChangeGear(int initialGear, int change);
-
-        public abstract void Score();
-
         public abstract string Input();
+
+        public abstract int Speedup(int initialSpeed);
+
+        public abstract void Damage();
 
         public void Go()
         {
@@ -63,39 +63,18 @@ namespace Ride
             t.Enabled = false;  // Stops the timer
         }
 
-        public virtual int Speedup(int initialSpeed)
+        public virtual int ChangeGear(int initialGear, int change)
         {
-            int finalSpeed = initialSpeed;
-            switch (gear)
-            {
-                case 1:
-                    if (initialSpeed < 20)
-                        finalSpeed = initialSpeed + 1;
-                    break;
-                case 2:
-                    if (initialSpeed < 45 && initialSpeed > 9)
-                        finalSpeed = initialSpeed + 1;
-                    break;
-                case 3:
-                    if (initialSpeed < 70 && initialSpeed > 34)
-                        finalSpeed = initialSpeed + 1;
-                    break;
-                case 4:
-                    if (initialSpeed < 140 && initialSpeed > 59)
-                        finalSpeed = initialSpeed + 1;
-                    break;
-                default:
-                    finalSpeed = initialSpeed;
-                    break;
-            }
-            return finalSpeed;
+            int finalGear = initialGear + change;
+            if (finalGear < 0 || finalGear > 4) finalGear = initialGear;
+            return finalGear;
         }
 
         public int ApplyBrakes(int initialSpeed)
         {
             int finalSpeed = initialSpeed;
             if (initialSpeed > 0)
-                finalSpeed = initialSpeed - 3;
+                finalSpeed = initialSpeed - 5;
             if (finalSpeed < 0) finalSpeed = 0;
             return finalSpeed;
         }
@@ -127,9 +106,12 @@ namespace Ride
             }
         }
 
-        public virtual void Damage()
+        public virtual void Score()
         {
-            damaged = 100;
+            int score = dist + (100 - damaged) + time;
+            string path = "MScores.txt";
+            System.IO.File.AppendAllText(path, score.ToString() + System.Environment.NewLine);
+            Display(path, score);
         }
 
         public void Display()
