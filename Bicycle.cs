@@ -28,7 +28,7 @@ namespace Ride
         public override int Speedup(int initialSpeed)
         {
 
-            int finalSpeed;
+            int finalSpeed = initialSpeed;
             switch (gear)
             {
                 case 1:
@@ -62,7 +62,6 @@ namespace Ride
                     else finalSpeed = initialSpeed + 1;
                     break;
                 default:
-                    finalSpeed = initialSpeed;
                     break;
             }
             return finalSpeed;
@@ -78,7 +77,7 @@ namespace Ride
         public override void Damage()
         {
             damaged = 100;
-            status = "** WRECKED **";
+            status = "** You are Fallen!! **";
         }
 
         public override void DisplayTime(object source, ElapsedEventArgs e)
@@ -90,11 +89,10 @@ namespace Ride
                 sb -= speed;        // speed breaker is getting closer each second
                 if (sb <= 0)
                 {
-
-                    sb = r.Next(70, 150);
-
                     if (speed > 20)
                         Damage();
+
+                    sb = r.Next(70, 150);
                 }
                 Display();
             }

@@ -34,7 +34,7 @@ namespace Ride
                         finalSpeed = initialSpeed + 1;
                     break;
                 case 3:
-                    if (initialSpeed < 70 && initialSpeed > 34)
+                    if (initialSpeed < 80 && initialSpeed > 34)
                         finalSpeed = initialSpeed + 1;
                     break;
                 case 4:

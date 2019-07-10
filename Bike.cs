@@ -92,17 +92,20 @@ namespace Ride
         {
             // code here will run every second
             {
-                if (damaged < 100 && time >= 1)
+                if (damaged < 100 && time > 0)
                 {
                     time -= 1;
                     dist += speed;
                     sb -= speed;
                     if (sb <= 0)
-                    {
-                        sb = r.Next(500, 1500);     // The next speed breaker
+                    {    
 
                         if (speed > 20)
                             Damage();
+
+                        if (damaged < 100)
+                            sb = r.Next(500, 1500);   // The next speed breaker
+                        else sb = 0;
                     }
                     Display();
                 }
@@ -141,7 +144,10 @@ namespace Ride
 
             int best = 0;
             for (int i = 0; i < hist.Length; i++)
-                if (Convert.ToInt32(hist[i]) > best) best = Convert.ToInt32(hist[i]);
+            {
+                int a = Convert.ToInt32(hist[i]);
+                if (a > best) best = a;
+            }
 
             Console.WriteLine("\n\n\t\t\t\t   Game Over!");
             Console.WriteLine("\n\t\t\t\tYour Score: " + score);
