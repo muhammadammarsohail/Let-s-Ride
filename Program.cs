@@ -11,7 +11,10 @@ namespace Ride
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("What do you want to ride?");
+            Console.WriteLine("LET'S RIDE");
+            System.Threading.Thread.Sleep(2000);
+            Console.Clear();
+            Console.WriteLine("MOTORCYCLE or BICYCLE?");
             string vehicle = Console.ReadLine();
             switch (vehicle)
             {

@@ -10,6 +10,13 @@ namespace Ride
     class Bicycle : Bike
     {
 
+        public Bicycle() : base()
+        {
+            Console.WriteLine(status);
+            System.Threading.Thread.Sleep(1000);
+            Console.WriteLine("GO!");
+        }
+
         string status = "KEEP CAPSLOCK ON";
 
         public override string Input()

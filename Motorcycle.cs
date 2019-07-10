@@ -8,6 +8,11 @@ namespace Ride
 {
     class Motorcycle : Bike
     {
+        public Motorcycle() : base()
+        {
+            Console.WriteLine("GO!");
+        }
+
         public override string Input()
         {
             ConsoleKeyInfo k = Console.ReadKey();

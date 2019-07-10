@@ -9,10 +9,19 @@ namespace Ride
 {
     abstract class Bike : IRun, IPlay
     {
-        public static int speed = 0, gear = 0, time = 60, dist = 0, sb, damaged, count = 0;
+        string act;
+        public static int speed = 0, gear = 0, time = 61, dist = 0, sb, damaged, count = 0;
         static protected Random r = new Random();
         static readonly Timer t = new Timer();
-        string act;
+
+        public Bike()
+        {
+            Console.Clear();
+            Console.WriteLine("READY!");
+            System.Threading.Thread.Sleep(1000);
+            Console.WriteLine("STEADY!");
+            System.Threading.Thread.Sleep(1000);
+        }
 
         public abstract string Input();
 
