@@ -42,7 +42,6 @@ namespace Ride
                         finalSpeed = initialSpeed + 1;
                     break;
                 default:
-                    finalSpeed = initialSpeed;
                     break;
             }
             return finalSpeed;
